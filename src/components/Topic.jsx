@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { getArticles } from "../utils/api";
 import { Router, Link } from "@reach/router";
-
-class Articles extends Component {
+class topic extends Component {
   state = { articles: null };
   render() {
     return (
@@ -23,15 +22,21 @@ class Articles extends Component {
       </ul>
     );
   }
-  componentWillMount = async () => {
-    return await this.fetchArticles();
+  componentDidUpdate = async (prevProps, prevState) => {
+    if (prevState !== this.state) {
+      return await this.fetchArticles(null, this.props.topic);
+    }
+  };
+  componentWillMount = async props => {
+    return await this.fetchArticles(null, this.props.topic);
   };
 
-  fetchArticles = async () => {
-    const articles = await getArticles();
+  fetchArticles = async props => {
+    const articles = await getArticles(null, this.props.topic);
+    console.log(articles);
 
     return this.setState({ articles });
   };
 }
 
-export default Articles;
+export default topic;
