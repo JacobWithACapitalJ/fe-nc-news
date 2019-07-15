@@ -23,7 +23,7 @@ class topic extends Component {
     );
   }
   componentDidUpdate = async (prevProps, prevState) => {
-    if (prevState !== this.state) {
+    if (prevProps.topic !== this.props.topic) {
       return await this.fetchArticles(null, this.props.topic);
     }
   };
