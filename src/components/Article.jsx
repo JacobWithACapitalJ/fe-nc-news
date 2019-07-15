@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { getArticles } from "../utils/api";
+import { getArticles, getComments } from "../utils/api";
 class Article extends Component {
-  state = { article: null };
+  state = { article: null, comments: null };
   render() {
     return (
       <div>
@@ -13,11 +13,26 @@ class Article extends Component {
         <p>
           {this.state.article === null ? "loading..." : this.state.article.body}
         </p>
+        <ul>
+          {this.state.comments === null
+            ? "loading..."
+            : this.state.comments.map(comment => {
+                return (
+                  <li>
+                    <h6>{comment.author}</h6>
+                    <h4>{comment.body}</h4>
+                  </li>
+                );
+              })}
+        </ul>
       </div>
     );
   }
   componentWillMount = async props => {
-    return await this.fetchArticles(this.props.article_id);
+    return (
+      await this.fetchArticles(this.props.article_id),
+      await this.fetchComments(this.props.article_id)
+    );
   };
 
   fetchArticles = async props => {
@@ -25,6 +40,11 @@ class Article extends Component {
     console.log(article);
 
     return this.setState({ article });
+  };
+  fetchComments = async props => {
+    const comments = await getComments(this.props.article_id);
+    console.log(comments);
+    return this.setState({ comments });
   };
 }
 

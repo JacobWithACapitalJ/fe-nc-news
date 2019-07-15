@@ -20,3 +20,9 @@ export const getTopics = async () => {
   console.log(data);
   return data;
 };
+
+export const getComments = async id => {
+  const { data } = await axios.get(`${baseURL}articles/${id}/comments`);
+  console.log(data);
+  return data;
+};
