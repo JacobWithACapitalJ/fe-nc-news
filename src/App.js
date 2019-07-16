@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
 import Topic from "./components/Topic";
+
 function App() {
   return (
     <div className="App">

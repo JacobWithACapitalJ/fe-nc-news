@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { getArticles, getComments } from "../utils/api";
+import { getArticles, getComments, postComment } from "../utils/api";
 class Article extends Component {
-  state = { article: null, comments: null };
+  state = {
+    article: null,
+    comments: null,
+    newComment: { body: "", author: "" }
+  };
   render() {
     return (
       <div className="fullArticle">
@@ -25,6 +29,20 @@ class Article extends Component {
                 );
               })}
         </ul>
+        <form name="newComment">
+          <input type="text" name="body" onChange={this.handleBodyChange} />
+          <select
+            value={this.state.newComment.author}
+            name="author"
+            onChange={this.handleAuthorChange}
+          >
+            <option value="grumpy19">grumpy19</option>
+            <option value="jessjelly">jessjelly</option>
+          </select>
+          <button type="submit" name="submit" onClick={this.handleSubmit}>
+            submit
+          </button>
+        </form>
       </div>
     );
   }
@@ -45,6 +63,30 @@ class Article extends Component {
     const comments = await getComments(this.props.article_id);
     console.log(comments);
     return this.setState({ comments });
+  };
+  handleBodyChange = event => {
+    this.setState({
+      newComment: {
+        body: event.target.value,
+        author: this.state.newComment.body
+      }
+    });
+  };
+  handleAuthorChange = event => {
+    this.setState({
+      newComment: {
+        author: event.target.value,
+        body: this.state.newComment.author
+      }
+    });
+  };
+  handleSubmit = async event => {
+    event.preventDefault();
+    const res = await postComment(
+      this.state.article.article_id,
+      this.state.newComment
+    );
+    console.log(res);
   };
 }
 

@@ -9,7 +9,7 @@ class Header extends Component {
           style={{
             position: "fixed",
             textAlign: "center",
-            margin: 0,
+            margin: -10,
             padding: 0,
             border: "dashed 2px darkslateblue",
             width: "100vw",
