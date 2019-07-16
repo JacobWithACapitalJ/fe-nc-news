@@ -9,7 +9,7 @@ class topic extends Component {
         {this.state.articles
           ? this.state.articles.map(article => {
               return (
-                <Link to={`./${article.article_id}`}>
+                <Link to={`../../${article.article_id}`}>
                   <li className="articlePreview" key={article.article_id}>
                     {article.title}
                     <br />

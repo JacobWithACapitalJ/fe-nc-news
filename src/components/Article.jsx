@@ -4,7 +4,7 @@ class Article extends Component {
   state = { article: null, comments: null };
   render() {
     return (
-      <div>
+      <div className="fullArticle">
         <h1>
           {this.state.article === null
             ? "loading..."
@@ -18,7 +18,7 @@ class Article extends Component {
             ? "loading..."
             : this.state.comments.map(comment => {
                 return (
-                  <li>
+                  <li key={comment.comment_id}>
                     <h6>{comment.author}</h6>
                     <h4>{comment.body}</h4>
                   </li>

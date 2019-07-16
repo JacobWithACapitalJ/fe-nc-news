@@ -5,25 +5,36 @@
   margin: auto;
   text-align: center;
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-template-rows: 1fr 1fr 8fr;
+
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 9fr;
   grid-gap: 1em;
+  grid-template-areas:
+    "header header"
+    "nav article";
 }
 .Header {
   margin: 0;
-  grid-area: 1 / span 3;
+  grid-area: header;
   border: solid 2px green;
+  height: 10vh;
 }
+/* .headerContent {
+  position: fixed;
+  text-align: center;
+  margin: auto;
+  border: dashed 2px darkslateblue;
+} */
 
 .Nav {
   margin: 0;
-  grid-area: 2 span / span 1;
+  grid-area: nav;
   border: solid 2px blue;
 }
 .Articles {
   margin: 0;
   padding: 0;
-  grid-area: 2 span;
+  grid-area: article;
   border: solid 2px red;
   overflow-y: scroll;
 }
@@ -60,5 +71,15 @@
   box-shadow: 2px 2px 12px rgba(71, 71, 71, 0.164);
   transform: scale(1.01);
   border: solid 1px grey;
+  transition: all 200ms ease-in-out;
+}
+
+.fullArticle {
+  border: solid 1px red;
+  grid-area: article;
+  text-align: justify;
+  padding: 1em;
+  margin: 0;
+  list-style: none;
   transition: all 200ms ease-in-out;
 }
