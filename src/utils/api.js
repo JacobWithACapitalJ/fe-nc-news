@@ -27,12 +27,47 @@ export const getComments = async id => {
   return data;
 };
 
-export const postComment = async (id, comment) => {
+export const postComment = async (id, comment, token) => {
   const { author, body } = comment;
   console.log(comment);
-  const res = await axios.post(`${baseURL}articles/${id}/comments`, {
-    username: author,
-    body
-  });
+
+  const res = await axios
+    .post(`${baseURL}articles/${id}/newcomment`, {
+      username: author,
+      body,
+      token
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      return err;
+    });
+
   return res;
+};
+
+export const authLogin = async (username, password) => {
+  const res = await axios({
+    method: "post",
+    url: `${baseURL}login`,
+    headers: { "Set-Cookie": ["type=token", "language=javascript"] },
+    data: { username, password }
+  }).catch(err => {
+    alert("Error logging in please try again");
+  });
+
+  if (res.status === 200) {
+    console.log("logged in");
+    return res;
+  } else {
+    const error = new Error(res.error);
+    throw error;
+  }
+};
+
+export const incrementVote = async (inc_votes, id, section) => {
+  const res = await axios.patch(`${baseURL}${section}/${id}`, {
+    inc_votes
+  });
 };

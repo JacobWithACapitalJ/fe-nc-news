@@ -14,11 +14,11 @@ class Header extends Component {
             border: "dashed 2px darkslateblue",
             width: "100vw",
             height: this.state.height,
-            fontSize: this.state.height,
+            // fontSize: this.state.height,
             scale: this.state.height,
             // textSizeAdjust: "auto",
-            backgroundColor: "grey"
-            // transition: "0.2s"
+            backgroundColor: "#ff9f1c",
+            transition: "0.2s"
           }}
         >
           {"< NC - NEWS />"}
@@ -42,7 +42,8 @@ class Header extends Component {
       });
     } else {
       this.setState({
-        height: 100 - (window.pageYOffset < 50 ? window.pageYOffset : 50)
+        height:
+          100 - (window.pageYOffset / 2 < 50 ? window.pageYOffset / 2 : 50)
       });
     }
   };

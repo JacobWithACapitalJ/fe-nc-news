@@ -1,14 +1,26 @@
+.bg {
+  /* background-color: #011627; */
+}
+:link {
+  /* color: #fdfffc; */
+  text-decoration: none;
+
+  /* background: #f71735; */
+}
+
 .App {
-  border: solid 3px purple;
-  width: 80%;
+  /* border: solid 3px purple; */
+  width: 100vw;
   height: 100vh;
   margin: auto;
   text-align: center;
   display: grid;
+  /* color: #fdfffc !important; */
 
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 9fr;
   grid-gap: 1em;
+
   grid-template-areas:
     "header header"
     "nav article";
@@ -16,26 +28,36 @@
 .Header {
   margin: 0;
   grid-area: header;
-  border: solid 2px green;
+  /* border: solid 2px green; */
   height: 10vh;
 }
-/* .headerContent {
-  position: fixed;
-  text-align: center;
-  margin: auto;
-  border: dashed 2px darkslateblue;
-} */
 
+.articleContainer {
+  display: grid;
+  grid-template-columns: 100px 8fr;
+  grid-template-areas: "votes article";
+  border: solid 1px rgb(211, 211, 211);
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+.votes {
+  grid-area: votes;
+  /* border: dashed 1px greenyellow; */
+  text-align: wrap;
+  margin: 10px;
+}
 .Nav {
   margin: 0;
   grid-area: nav;
-  border: solid 2px blue;
+  /* border: solid 2px blue; */
+  background-color: #011627;
 }
 .Articles {
   margin: 0;
   padding: 0;
+  text-decoration: none;
   grid-area: article;
-  border: solid 2px red;
+  /* border: solid 2px red; */
   overflow-y: scroll;
 }
 /* .NewestArticle {
@@ -43,18 +65,25 @@
   grid-area: 1 / 2;
 } */
 .articlePreview {
-  border: dashed 1px darkcyan;
+  /* border: dashed 1px darkcyan; */
   height: 3em;
+  text-decoration: none;
   text-align: justify;
   padding: 0.2em;
   margin: 1em;
   list-style: none;
   transition: all 200ms ease-in-out;
 }
-.articlePreview:hover {
+.articleContainer:hover {
   box-shadow: 2px 2px 12px rgba(71, 71, 71, 0.164);
   border: solid 1px grey;
   transition: all 200ms ease-in-out;
+}
+.plusVote:hover {
+  background-color: #41ead4;
+}
+.minusVote:hover {
+  background-color: #f71735;
 }
 
 .navLinks {
@@ -75,7 +104,7 @@
 }
 
 .fullArticle {
-  border: solid 1px red;
+  /* border: solid 1px red; */
   grid-area: article;
   text-align: justify;
   padding: 1em;

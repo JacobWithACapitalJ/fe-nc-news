@@ -23,6 +23,9 @@ class Nav extends Component {
                   </li>
                 );
               })}
+          <li className="navLinks" key="login">
+            <Link to="/login">LOGIN</Link>
+          </li>
         </ul>
       </div>
     );

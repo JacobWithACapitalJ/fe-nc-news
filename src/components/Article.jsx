@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { getArticles, getComments, postComment } from "../utils/api";
+import cookie from "react-cookies";
 class Article extends Component {
   state = {
     article: null,
     comments: null,
-    newComment: { body: "", author: "" }
+    body: "",
+    author: ""
   };
   render() {
     return (
@@ -30,11 +32,11 @@ class Article extends Component {
               })}
         </ul>
         <form name="newComment">
-          <input type="text" name="body" onChange={this.handleBodyChange} />
+          <input type="text" name="body" onChange={this.handleChange} />
           <select
-            value={this.state.newComment.author}
+            value={this.state.author}
             name="author"
-            onChange={this.handleAuthorChange}
+            onChange={this.handleChange}
           >
             <option value="grumpy19">grumpy19</option>
             <option value="jessjelly">jessjelly</option>
@@ -64,27 +66,22 @@ class Article extends Component {
     console.log(comments);
     return this.setState({ comments });
   };
-  handleBodyChange = event => {
+
+  handleChange = event => {
+    const { value, name } = event.target;
     this.setState({
-      newComment: {
-        body: event.target.value,
-        author: this.state.newComment.body
-      }
+      [name]: value
     });
   };
-  handleAuthorChange = event => {
-    this.setState({
-      newComment: {
-        author: event.target.value,
-        body: this.state.newComment.author
-      }
-    });
-  };
+
   handleSubmit = async event => {
     event.preventDefault();
+    const { token } = cookie.select(/token/);
+    console.log(token);
     const res = await postComment(
       this.state.article.article_id,
-      this.state.newComment
+      { author: this.state.author, body: this.state.body },
+      token
     );
     console.log(res);
   };

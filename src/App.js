@@ -6,17 +6,21 @@ import Nav from "./components/Nav";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
 import Topic from "./components/Topic";
+import Login from "./components/Login";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Nav />
-      <Router>
-        <Articles path="/articles" />
-        <Article path="articles/:article_id" />
-        <Topic path="articles/topics/:topic" />
-      </Router>
+    <div className="bg">
+      <div className="App">
+        <Header />
+        <Nav />
+        <Router>
+          <Articles path="/articles" />
+          <Article path="articles/:article_id" />
+          <Topic path="articles/topics/:topic" />
+          <Login path="/login" />
+        </Router>
+      </div>
     </div>
   );
 }

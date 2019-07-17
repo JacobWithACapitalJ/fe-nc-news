@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getArticles } from "../utils/api";
 import { Router, Link } from "@reach/router";
+import Votes from "./Votes";
 
 class Articles extends Component {
   state = { articles: null };
@@ -10,13 +11,21 @@ class Articles extends Component {
         {this.state.articles
           ? this.state.articles.map(article => {
               return (
-                <Link to={`./${article.article_id}`}>
-                  <li className="articlePreview" key={article.article_id}>
-                    {article.title}
-                    <br />
-                    comments: {article.comments_count}
-                  </li>
-                </Link>
+                <div className="articleContainer">
+                  <Votes
+                    votes={article.votes}
+                    id={article.article_id}
+                    section="articles"
+                    className="votes"
+                  />
+                  <Link to={`./${article.article_id}`}>
+                    <li className="articlePreview" key={article.article_id}>
+                      {article.title}
+                      <br />
+                      comments: {article.comments_count}
+                    </li>
+                  </Link>
+                </div>
               );
             })
           : "loading..."}
