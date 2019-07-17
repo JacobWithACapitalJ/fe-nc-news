@@ -32,7 +32,8 @@
 }
 .Header h1 {
   all: unset;
-  align-self: left;
+  font-size: 3em;
+  text-align: center;
 }
 
 .articleContainer {
@@ -66,6 +67,10 @@
 .Nav {
   margin: 0;
   padding: 0;
+  font-size: 3em;
+  text-transform: uppercase;
+  padding: 0.5em;
+  color: #f71735;
   grid-area: nav;
   background-color: #011627;
 }
@@ -121,10 +126,10 @@
 }
 
 .navLinks:hover {
-  box-shadow: 2px 2px 12px rgba(71, 71, 71, 0.164);
+  /* box-shadow: 2px 2px 12px rgba(71, 71, 71, 0.164); */
   transform: translateX(1em);
   transition: all 200ms ease-in-out;
-  background-color: #011627;
+  /* background-color: #011627; */
 }
 
 .fullArticle {

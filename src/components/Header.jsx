@@ -8,14 +8,9 @@ class Header extends Component {
         <h1
           style={{
             position: "fixed",
-            textAlign: "left",
             width: "100%",
             height: this.state.height,
-            // fontSize: this.state.height,
-            // scale: this.state.height,
-            // textSizeAdjust: "auto",
             backgroundColor: "#ff9f1c"
-            // transition: "0.2s"
           }}
         >
           {"< NC - NEWS />"}
