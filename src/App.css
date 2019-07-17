@@ -1,5 +1,5 @@
 .bg {
-  /* background-color: #011627; */
+  background-color: #f3f3f3;
 }
 :link {
   /* color: #fdfffc; */
@@ -9,17 +9,14 @@
 }
 
 .App {
-  /* border: solid 3px purple; */
   width: 100vw;
   height: 100vh;
   margin: auto;
   text-align: center;
   display: grid;
-  /* color: #fdfffc !important; */
-
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 6fr;
   grid-template-rows: 1fr 9fr;
-  grid-gap: 1em;
+  column-gap: 1em;
 
   grid-template-areas:
     "header header"
@@ -27,9 +24,15 @@
 }
 .Header {
   margin: 0;
+  padding: 0;
+  text-align: left;
   grid-area: header;
-  /* border: solid 2px green; */
   height: 10vh;
+  background-color: #f71735;
+}
+.Header h1 {
+  all: unset;
+  align-self: left;
 }
 
 .articleContainer {
@@ -37,35 +40,52 @@
   grid-template-columns: 100px 8fr;
   grid-template-areas: "votes article";
   border: solid 1px rgb(211, 211, 211);
+  background-color: #fdfffc;
   text-decoration: none;
   margin-bottom: 1em;
 }
+.articleContainer a {
+  color: #011627;
+}
+
 .votes {
   grid-area: votes;
-  /* border: dashed 1px greenyellow; */
   text-align: wrap;
   margin: 10px;
 }
+.votes button {
+  all: unset;
+  width: 60px;
+  border: 1px solid grey;
+}
+.votes button:hover {
+  box-shadow: 2px 2px 12px rgba(71, 71, 71, 0.164);
+  border: solid 1px grey;
+  transition: all 200ms ease-in-out;
+}
 .Nav {
   margin: 0;
+  padding: 0;
   grid-area: nav;
-  /* border: solid 2px blue; */
   background-color: #011627;
 }
+.Nav li {
+  /* width: 100%; */
+  text-align: right;
+  text-transform: uppercase;
+  /* border: solid 1px #f71735; */
+  padding-right: 1em;
+}
+
 .Articles {
-  margin: 0;
+  margin-top: 40vh;
+  /* margin: 0; */
   padding: 0;
   text-decoration: none;
   grid-area: article;
-  /* border: solid 2px red; */
   overflow-y: scroll;
 }
-/* .NewestArticle {
-  border: solid 1px cyan;
-  grid-area: 1 / 2;
-} */
 .articlePreview {
-  /* border: dashed 1px darkcyan; */
   height: 3em;
   text-decoration: none;
   text-align: justify;
@@ -85,22 +105,26 @@
 .minusVote:hover {
   background-color: #f71735;
 }
+.Nav ul {
+  all: unset;
+  font-size: 28px;
+}
 
 .navLinks {
-  padding-left: 0.2em;
+  /* padding-left: 0.2em; */
   list-style: none;
-  background-color: rgb(230, 230, 230);
-  border: solid 1px rgb(241, 241, 241);
   margin: 0px 0px 10px 0px;
-  border-radius: 2px;
   transition: all 200ms ease-in-out;
+}
+.navLinks a {
+  color: #41ead4;
 }
 
 .navLinks:hover {
   box-shadow: 2px 2px 12px rgba(71, 71, 71, 0.164);
-  transform: scale(1.01);
-  border: solid 1px grey;
+  transform: translateX(1em);
   transition: all 200ms ease-in-out;
+  background-color: #011627;
 }
 
 .fullArticle {
