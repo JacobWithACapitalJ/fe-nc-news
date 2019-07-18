@@ -9,6 +9,7 @@ class Header extends Component {
           style={{
             position: "fixed",
             width: "100%",
+            fontSize: this.state.height,
             height: this.state.height,
             backgroundColor: "#ff9f1c"
           }}

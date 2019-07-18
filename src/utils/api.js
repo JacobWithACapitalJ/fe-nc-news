@@ -1,15 +1,20 @@
 import axios from "axios";
 
 const baseURL = `https://jacobs-nc-news.herokuapp.com/api/`;
-export const getArticles = async (id, topic = null) => {
+export const getArticles = async (id, topic = null, filter = null) => {
   let url = "";
   if (id === undefined) {
     url = `${baseURL}articles`;
-  } else if (topic !== null) {
+  } else if (topic !== null && filter == null) {
     url = `${baseURL}articles?topic=${topic.slice(1)}`;
-  } else if (id !== undefined && topic === null) {
+  } else if (topic !== null && filter !== null) {
+    url = `${baseURL}articles?topic=${topic.slice(1)}&sort_by=${filter}`;
+  } else if (id !== undefined && topic === null && filter === null) {
     url = `${baseURL}articles/${id}`;
+  } else if (topic === null && filter !== null) {
+    url = `${baseURL}articles?sort_by=${filter}`;
   }
+  console.log(url);
   const { data } = await axios.get(`${url}`);
 
   return data;
@@ -17,19 +22,18 @@ export const getArticles = async (id, topic = null) => {
 
 export const getTopics = async () => {
   const { data } = await axios.get(`${baseURL}topics`);
-  console.log(data);
+
   return data;
 };
 
 export const getComments = async id => {
   const { data } = await axios.get(`${baseURL}articles/${id}/comments`);
-  console.log(data);
+
   return data;
 };
 
 export const postComment = async (id, comment, token) => {
   const { author, body } = comment;
-  console.log(comment);
 
   const res = await axios
     .post(`${baseURL}articles/${id}/newcomment`, {

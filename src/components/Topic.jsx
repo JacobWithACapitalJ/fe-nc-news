@@ -7,6 +7,23 @@ class topic extends Component {
   render() {
     return (
       <ul className="Articles">
+        <span>
+          <img
+            src={`https://picsum.photos/${Math.floor(
+              (16 * window.innerHeight) / 25
+            )}/${9 * Math.floor(window.innerHeight / 25)}`}
+            alt="splash"
+          />
+        </span>
+        <br />
+        <span className="filters">
+          sort articles by:{" "}
+          <button onClick={() => this.handleFilter("created_at")}>date</button>
+          <button onClick={() => this.handleFilter("comments_count")}>
+            comments
+          </button>
+          <button onClick={() => this.handleFilter("votes")}>votes</button>
+        </span>
         {this.state.articles
           ? this.state.articles.map(article => {
               return (
@@ -42,8 +59,12 @@ class topic extends Component {
 
   fetchArticles = async props => {
     const articles = await getArticles(null, this.props.topic);
-    console.log(articles);
 
+    return this.setState({ articles });
+  };
+  handleFilter = async filter => {
+    console.log(filter);
+    const articles = await getArticles(null, this.props.topic, filter);
     return this.setState({ articles });
   };
 }
