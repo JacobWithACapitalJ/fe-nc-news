@@ -6,7 +6,8 @@ class Article extends Component {
     article: null,
     comments: null,
     body: "",
-    author: ""
+    author: "",
+    valid: null
   };
   render() {
     return (
@@ -31,16 +32,29 @@ class Article extends Component {
                 );
               })}
         </ul>
+
+        {this.state.valid === false ? (
+          <p style={{ color: "red" }}>You need to be logged in to do that!</p>
+        ) : this.state.valid === true ? (
+          <p style={{ color: "greenyellow" }}>Comment posted!</p>
+        ) : null}
+
         <form name="newComment">
-          <input type="text" name="body" onChange={this.handleChange} />
-          <select
+          <input
+            type="text"
+            name="body"
+            onChange={this.handleChange}
+            placeholder="new comment"
+            alt="new comment"
+          />
+          {/* <select
             value={this.state.author}
             name="author"
             onChange={this.handleChange}
           >
             <option value="grumpy19">grumpy19</option>
             <option value="jessjelly">jessjelly</option>
-          </select>
+          </select> */}
           <button type="submit" name="submit" onClick={this.handleSubmit}>
             submit
           </button>
@@ -77,13 +91,18 @@ class Article extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     const { token } = cookie.select(/token/);
-    console.log(token);
+
     const res = await postComment(
       this.state.article.article_id,
       { author: this.state.author, body: this.state.body },
       token
-    );
-    console.log(res);
+    ).then(res => {
+      if (res.status !== 201) {
+        this.setState({ author: "", body: "", valid: false });
+      } else {
+        this.setState({ valid: true });
+      }
+    });
   };
 }
 

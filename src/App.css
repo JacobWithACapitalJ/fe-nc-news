@@ -90,6 +90,7 @@
   grid-area: article;
   overflow-y: scroll;
 }
+
 .articlePreview {
   height: 3em;
   text-decoration: none;
@@ -104,6 +105,11 @@
   border: solid 1px grey;
   transition: all 200ms ease-in-out;
 }
+.fullArticle {
+  border: solid 1px rgb(211, 211, 211);
+  background-color: #fdfffc;
+}
+
 .plusVote:hover {
   background-color: #41ead4;
 }
@@ -138,6 +144,24 @@
   text-align: justify;
   padding: 1em;
   margin: 0;
+  margin-top: 1em;
   list-style: none;
   transition: all 200ms ease-in-out;
+}
+.fullArticle input {
+  all: unset;
+  border: 1px solid rgb(163, 163, 163);
+  padding-left: 0.5em;
+}
+.fullArticle button {
+  all: unset;
+  width: 60px;
+  text-align: center;
+  border: 1px solid grey;
+}
+.fullArticle button:hover {
+  box-shadow: 2px 2px 12px rgba(71, 71, 71, 0.164);
+  border: solid 1px grey;
+  transition: all 200ms ease-in-out;
+  background-color: chartreuse;
 }

@@ -5,7 +5,7 @@ class Login extends Component {
   state = { username: null, password: null };
   render() {
     return (
-      <div>
+      <div className="loginbox">
         <form>
           <label htmlFor="username">username: </label>
           <input

@@ -33,15 +33,15 @@ export const postComment = async (id, comment, token) => {
 
   const res = await axios
     .post(`${baseURL}articles/${id}/newcomment`, {
-      username: author,
+      // username: author,
       body,
       token
     })
     .then(res => {
-      console.log(res);
+      return res;
     })
     .catch(err => {
-      return err;
+      return { Error: 401 };
     });
 
   return res;
