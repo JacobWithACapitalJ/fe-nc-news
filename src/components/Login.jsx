@@ -2,10 +2,18 @@ import React, { Component } from "react";
 import { authLogin } from "../utils/api";
 import cookie from "react-cookies";
 class Login extends Component {
-  state = { username: null, password: null };
+  state = { username: null, password: null, login: null };
   render() {
     return (
-      <div className="loginbox">
+      <div
+        className={
+          this.state.login === true
+            ? "loginTrue"
+            : this.state.login === false
+            ? "loginFalse"
+            : "loginbox"
+        }
+      >
         <form>
           <label htmlFor="username">username: </label>
           <input
@@ -34,8 +42,11 @@ class Login extends Component {
     authLogin(this.state.username, this.state.password)
       .then(res => {
         cookie.save("token", res.data.token);
+        this.setState({ login: true });
       })
-      .catch(console.log);
+      .catch(err => {
+        this.setState({ login: false });
+      });
   };
   handleChange = event => {
     const { value, name } = event.target;

@@ -157,7 +157,7 @@
   grid-area: article;
   text-align: justify;
   padding: 1em;
-  margin: 0;
+  margin-right: 1em;
   margin-top: 1em;
   list-style: none;
   transition: all 200ms ease-in-out;
@@ -203,6 +203,59 @@
   text-align: center;
   border: 1px solid grey;
 }
+.loginTrue input {
+  all: unset;
+  border: 1px solid rgb(163, 163, 163);
+  padding-left: 0.5em;
+  margin: 1em;
+  height: 3em;
+}
+.loginTrue button {
+  all: unset;
+  width: 60px;
+  text-align: center;
+  border: 1px solid grey;
+}
+.loginFalse input {
+  all: unset;
+  border: 1px solid rgb(163, 163, 163);
+  padding-left: 0.5em;
+  margin: 1em;
+  height: 3em;
+}
+.loginFalse button {
+  all: unset;
+  width: 60px;
+  text-align: center;
+  border: 1px solid grey;
+}
+
+.loginFalse {
+  border: solid 2px #f71735;
+
+  background-color: #fdfffc;
+  margin: auto;
+  margin-top: 2em;
+  height: 20em;
+  width: 20em;
+  padding-top: 2em;
+  align-content: center;
+}
+.loginTrue {
+  border: solid 4px chartreuse;
+  background-color: chartreuse;
+  margin: auto;
+  margin-top: 2em;
+  height: 20em;
+  width: 20em;
+  padding-top: 2em;
+  align-content: center;
+  /* display: none; */
+}
+.loginTrue form {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .App {
     grid-template-areas:

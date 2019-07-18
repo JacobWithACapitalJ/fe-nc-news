@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getArticles, getComments, postComment } from "../utils/api";
 import cookie from "react-cookies";
+import Person from "material-design-icons";
 class Article extends Component {
   state = {
     article: null,
@@ -25,8 +26,12 @@ class Article extends Component {
             ? "loading..."
             : this.state.comments.map(comment => {
                 return (
-                  <li key={comment.comment_id}>
-                    <h6>{comment.author}</h6>
+                  <li
+                    key={comment.comment_id}
+                    className="articleContainer"
+                    style={{ marginRight: "1em" }}
+                  >
+                    <h6 style={{ marginLeft: "1em" }}>{comment.author}</h6>
                     <h4>{comment.body}</h4>
                   </li>
                 );

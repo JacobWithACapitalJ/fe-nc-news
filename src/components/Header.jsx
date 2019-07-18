@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class Header extends Component {
-  state = { height: 100 };
+  state = { height: 100, user: null };
   render() {
     return (
       <div className="Header">
