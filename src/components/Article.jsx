@@ -72,13 +72,12 @@ class Article extends Component {
 
   fetchArticles = async props => {
     const article = await getArticles(this.props.article_id);
-    console.log(article);
 
     return this.setState({ article });
   };
   fetchComments = async props => {
     const comments = await getComments(this.props.article_id);
-    console.log(comments);
+
     return this.setState({ comments });
   };
 
