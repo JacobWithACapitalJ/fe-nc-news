@@ -1,11 +1,10 @@
 import React from "react";
-import "./App.css";
-import { Router, Link } from "@reach/router";
+import "antd/dist/antd.css";
+import { Router } from "@reach/router";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
-import Topic from "./components/Topic";
 import Login from "./components/Login";
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
         <Router>
           <Articles path="/articles" />
           <Article path="articles/:article_id" />
-          <Topic path="articles/topics/:topic" />
+          <Articles path="articles/topic/:topic" />
           <Login path="/login" />
         </Router>
       </div>

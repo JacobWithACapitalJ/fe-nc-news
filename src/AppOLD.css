@@ -257,6 +257,11 @@
   display: none;
 }
 
+.fullArticle .deleteUser {
+  /* float: right; */
+  align-self: center;
+}
+
 @media only screen and (max-width: 600px) {
   .App {
     grid-template-areas:

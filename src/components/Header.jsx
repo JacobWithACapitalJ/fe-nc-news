@@ -4,18 +4,8 @@ class Header extends Component {
   state = { height: 100, user: null };
   render() {
     return (
-      <div className="Header">
-        <h1
-          style={{
-            position: "fixed",
-            width: "100%",
-            fontSize: this.state.height,
-            height: this.state.height,
-            backgroundColor: "#ff9f1c"
-          }}
-        >
-          {"< NC - NEWS />"}
-        </h1>
+      <div>
+        <h1>{"< NC - NEWS />"}</h1>
       </div>
     );
   }

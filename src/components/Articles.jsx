@@ -1,48 +1,65 @@
 import React, { Component } from "react";
 import { getArticles } from "../utils/api";
-import { Router, Link } from "@reach/router";
+import { Link } from "@reach/router";
 import Votes from "./Votes";
+import { Menu, Dropdown, Icon, Card, message } from "antd";
 
 class Articles extends Component {
-  state = { articles: null, filter: null };
+  state = { articles: [], filter: "" };
+
   render() {
+    const { Meta } = Card;
+    const menu = (
+      <Menu>
+        <Menu.Item key="0" onClick={() => this.handleFilter("created_at")}>
+          Date
+        </Menu.Item>
+        <Menu.Item key="1" onClick={() => this.handleFilter("comments_count")}>
+          Comments
+        </Menu.Item>
+        <Menu.Item key="3" onClick={() => this.handleFilter("votes")}>
+          Votes
+        </Menu.Item>
+      </Menu>
+    );
+
     return (
-      <ul className="Articles">
-        <span>
-          <img
-            src={`https://picsum.photos/${Math.floor(
-              (16 * window.innerHeight) / 25
-            )}/${9 * Math.floor(window.innerHeight / 25)}`}
-            alt="splash"
-          />
-        </span>
-        <br />
-        <span className="filters">
-          sort articles by:{" "}
-          <button onClick={() => this.handleFilter("created_at")}>date</button>
-          <button onClick={() => this.handleFilter("comments_count")}>
-            comments
-          </button>
-          <button onClick={() => this.handleFilter("votes")}>votes</button>
-        </span>
+      <ul>
+        <Dropdown overlay={menu} trigger={["click"]}>
+          <span className="ant-dropdown-link">
+            {this.state.filter.length === 0
+              ? "Sort by..."
+              : `Sorting by ${this.state.filter}`}
+            <Icon type="down" />
+          </span>
+        </Dropdown>
         {this.state.articles
           ? this.state.articles.map(article => {
               return (
-                <div className="articleContainer">
-                  <Votes
-                    votes={article.votes}
-                    id={article.article_id}
-                    section="articles"
-                    className="votes"
-                  />
-                  <Link to={`./${article.article_id}`}>
-                    <li className="articlePreview" key={article.article_id}>
-                      {article.title}
-                      <br />
-                      comments: {article.comments_count}
-                    </li>
-                  </Link>
-                </div>
+                <Card
+                  title={article.title}
+                  hoverable
+                  bordered={true}
+                  key={article.article_id}
+                  style={{ width: "90%", margin: "1em" }}
+                  actions={[
+                    <Votes
+                      votes={article.votes}
+                      id={article.article_id}
+                      section="articles"
+                    />,
+                    <span>
+                      <Icon type="message" />
+                      &emsp; comments: {article.comments_count}
+                    </span>,
+                    <Link to={`./${article.article_id}`}>
+                      see more &emsp;
+                      <Icon type="dash" />
+                    </Link>
+                  ]}
+                >
+                  {`${article.body.slice(0, 255)}...`}
+                </Card>
               );
             })
           : "loading..."}
@@ -52,16 +69,19 @@ class Articles extends Component {
   componentWillMount = async () => {
     return await this.fetchArticles();
   };
-
+  componentDidUpdate = async (prevProps, prevState) => {
+    if (prevProps.topic !== this.props.topic) {
+      return await this.fetchArticles(null, this.props.topic);
+    }
+  };
   fetchArticles = async () => {
-    const articles = await getArticles();
-
+    const articles = await getArticles(this.props.topic);
     return this.setState({ articles });
   };
   handleFilter = async filter => {
-    console.log(filter);
-    const articles = await getArticles(null, null, filter);
-    return this.setState({ articles });
+    message.info(`filtering by ${filter}`);
+    const articles = await getArticles(this.props.topic, filter);
+    return this.setState({ articles, filter });
   };
 }
 

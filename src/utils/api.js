@@ -1,25 +1,18 @@
 import axios from "axios";
 
 const baseURL = `https://jacobs-nc-news.herokuapp.com/api/`;
-export const getArticles = async (id, topic = null, filter = null) => {
-  let url = "";
-  if (id === undefined) {
-    url = `${baseURL}articles`;
-  } else if (topic !== null && filter == null) {
-    url = `${baseURL}articles?topic=${topic.slice(1)}`;
-  } else if (topic !== null && filter !== null) {
-    url = `${baseURL}articles?topic=${topic.slice(1)}&sort_by=${filter}`;
-  } else if (id !== undefined && topic === null && filter === null) {
-    url = `${baseURL}articles/${id}`;
-  } else if (topic === null && filter !== null) {
-    url = `${baseURL}articles?sort_by=${filter}`;
-  }
-  console.log(url);
-  const { data } = await axios.get(`${url}`);
+export const getArticles = async (topic, sort_by) => {
+  const { data } = await axios.get(`${baseURL}articles`, {
+    params: { topic, sort_by }
+  });
 
   return data;
 };
+export const getArticle = async id => {
+  const { data } = await axios.get(`${baseURL}articles/${id}`);
 
+  return data;
+};
 export const getTopics = async () => {
   const { data } = await axios.get(`${baseURL}topics`);
 
@@ -74,4 +67,9 @@ export const incrementVote = async (inc_votes, id, section) => {
   const res = await axios.patch(`${baseURL}${section}/${id}`, {
     inc_votes
   });
+};
+
+export const checkAuth = async token => {
+  const res = await axios.post(`${baseURL}checkAuth`, { token });
+  return res;
 };

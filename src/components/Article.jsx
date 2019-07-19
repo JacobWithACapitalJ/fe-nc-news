@@ -1,18 +1,20 @@
 import React, { Component } from "react";
-import { getArticles, getComments, postComment } from "../utils/api";
+import { getArticle, getComments, postComment, checkAuth } from "../utils/api";
 import cookie from "react-cookies";
-import Person from "material-design-icons";
+
 class Article extends Component {
   state = {
     article: null,
     comments: null,
     body: "",
     author: "",
-    valid: null
+    valid: null,
+    username: null
   };
   render() {
     return (
-      <div className="fullArticle">
+      //___________________comments____________________
+      <div>
         <h1>
           {this.state.article === null
             ? "loading..."
@@ -27,8 +29,11 @@ class Article extends Component {
             : this.state.comments.map(comment => {
                 return (
                   <li key={comment.comment_id}>
-                    <h6 style={{ marginLeft: "1em" }}>{comment.author}</h6>
+                    <h6>{comment.author}</h6>
                     <h4>{comment.body}</h4>
+                    {this.state.username === comment.author ? (
+                      <button onClick={this.deleteUser}>DELETE COMMENT</button>
+                    ) : null}
                   </li>
                 );
               })}
@@ -66,12 +71,13 @@ class Article extends Component {
   componentWillMount = async props => {
     return (
       await this.fetchArticles(this.props.article_id),
-      await this.fetchComments(this.props.article_id)
+      await this.fetchComments(this.props.article_id),
+      await this.checkUser()
     );
   };
 
   fetchArticles = async props => {
-    const article = await getArticles(this.props.article_id);
+    const article = await getArticle(this.props.article_id);
 
     return this.setState({ article });
   };
@@ -103,6 +109,17 @@ class Article extends Component {
         this.setState({ valid: true });
       }
     });
+  };
+
+  checkUser = async () => {
+    const { token } = cookie.select(/token/);
+    try {
+      const res = await checkAuth(token);
+      this.setState({ username: res.data.username });
+    } catch (error) {
+      console.log(error);
+    }
+    // return res.data.username;
   };
 }
 
