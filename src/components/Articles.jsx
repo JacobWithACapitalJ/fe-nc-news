@@ -40,7 +40,7 @@ class Articles extends Component {
                   bordered={true}
                   key={article.article_id}
                   // size="small"
-                  style={{ width: "90%", margin: "1em" }}
+                  style={{ marginBottom: "1em" }}
                   actions={[
                     <Votes
                       votes={article.votes}

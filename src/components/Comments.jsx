@@ -12,10 +12,11 @@ class Comments extends Component {
   };
   render() {
     return (
-      <div>
+      <div key="articleComments">
         <NewComment
           author={this.state.username}
           article_id={this.props.article_id}
+          ket="newComment"
         />
         {this.state.comments.length === 0
           ? "loading..."
@@ -24,6 +25,7 @@ class Comments extends Component {
                 <span>
                   <Divider dashed />
                   <Comment
+                    key={comment.comment_id}
                     actions={[]}
                     author={comment.author}
                     avatar={

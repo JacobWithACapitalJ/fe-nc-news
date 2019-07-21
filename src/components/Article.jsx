@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { getArticle, getComments, postComment, checkAuth } from "../utils/api";
+import { getArticle, getComments, checkAuth } from "../utils/api";
 import cookie from "react-cookies";
 import Comments from "./Comments";
-import { Menu, Dropdown, Icon, Card, message } from "antd";
+import { Card } from "antd";
 class Article extends Component {
   state = {
     article: null,
@@ -30,25 +30,6 @@ class Article extends Component {
         </Card>
         {}
         <ul />
-
-        {this.state.valid === false ? (
-          <p style={{ color: "red" }}>You need to be logged in to do that!</p>
-        ) : this.state.valid === true ? (
-          <p style={{ color: "greenyellow" }}>Comment posted!</p>
-        ) : null}
-
-        <form name="newComment">
-          <input
-            type="text"
-            name="body"
-            onChange={this.handleChange}
-            placeholder="new comment"
-            alt="new comment"
-          />
-          <button type="submit" name="submit" onClick={this.handleSubmit}>
-            submit
-          </button>
-        </form>
       </div>
     );
   }
@@ -75,23 +56,6 @@ class Article extends Component {
     const { value, name } = event.target;
     this.setState({
       [name]: value
-    });
-  };
-
-  handleSubmit = async event => {
-    event.preventDefault();
-    const { token } = cookie.select(/token/);
-
-    const res = await postComment(
-      this.state.article.article_id,
-      { author: this.state.author, body: this.state.body },
-      token
-    ).then(res => {
-      if (res.status !== 201) {
-        this.setState({ author: "", body: "", valid: false });
-      } else {
-        this.setState({ valid: true });
-      }
     });
   };
 
