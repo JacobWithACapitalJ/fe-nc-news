@@ -31,7 +31,7 @@ function App() {
         </Sider>
         <Layout>
           <Layout.Header>
-            <Typography.Title style={{ textAlign: "center" }}>
+            <Typography.Title style={{ textAlign: "center", color: "white" }}>
               NC News
             </Typography.Title>
           </Layout.Header>
