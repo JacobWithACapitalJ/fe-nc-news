@@ -3,7 +3,7 @@ import { getArticles } from "../utils/api";
 import { Link } from "@reach/router";
 import Votes from "./Votes";
 import { Menu, Dropdown, Icon, Card, message } from "antd";
-// import "../styles/dark.min.css";
+
 class Articles extends Component {
   state = { articles: [], filter: "" };
 

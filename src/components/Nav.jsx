@@ -43,28 +43,3 @@ class Nav extends Component {
 }
 
 export default Nav;
-{
-  /* <div>
-  topics:
-        <ul>
-    <li key="HOME">
-      <Link to="/articles">HOME</Link>
-    </li>
-    {this.state.topics === null
-      ? "loading"
-      : this.state.topics.map(topic => {
-        return (
-
-          <li key={topic.slug}>
-            <Link to={`/articles/topic/${topic.slug}`}>
-              {topic.slug}
-            </Link>
-          </li>
-        );
-      })}
-    <li key="login">
-      <Link to="/login">LOGIN</Link>
-    </li>
-  </ul>
-</div> */
-}

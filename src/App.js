@@ -30,13 +30,18 @@ function App() {
           <Nav />
         </Sider>
         <Layout>
-          <Layout.Header style={{ background: "#fff", padding: 0 }}>
+          <Layout.Header>
             <Typography.Title style={{ textAlign: "center" }}>
               NC News
             </Typography.Title>
           </Layout.Header>
-          <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-            <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
+          <Content
+            style={{
+              margin: "24px 16px 0",
+              overflowY: "scroll"
+            }}
+          >
+            <div style={{ padding: 24, minHeight: 360 }}>
               <Router>
                 <Articles path="/articles" />
                 <Article path="/articles/:article_id" />

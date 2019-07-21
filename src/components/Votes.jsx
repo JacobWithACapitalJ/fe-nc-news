@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { incrementVote } from "../utils/api";
-import { Button, Row, Col, Icon } from "antd";
+import { Button, Icon } from "antd";
 import cookie from "react-cookies";
 class Votes extends Component {
   state = { currentVotes: this.props.votes, voted: false };

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { getComments, postComment, checkAuth } from "../utils/api";
+import { getComments, checkAuth } from "../utils/api";
 import cookie from "react-cookies";
-import { Comment, Avatar, Divider, Alert } from "antd";
+import { Comment, Avatar, Divider } from "antd";
 import Votes from "./Votes";
 import NewComment from "./NewComment";
 
