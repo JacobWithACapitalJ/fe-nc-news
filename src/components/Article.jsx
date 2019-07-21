@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { getArticle, getComments, postComment, checkAuth } from "../utils/api";
 import cookie from "react-cookies";
-
+import Comments from "./Comments";
+import { Menu, Dropdown, Icon, Card, message } from "antd";
 class Article extends Component {
   state = {
     article: null,
@@ -13,31 +14,22 @@ class Article extends Component {
   };
   render() {
     return (
-      //___________________comments____________________
       <div>
-        <h1>
-          {this.state.article === null
-            ? "loading..."
-            : this.state.article.title}
-        </h1>
-        <p>
+        <Card
+          title={
+            this.state.article === null
+              ? "loading..."
+              : this.state.article.title
+          }
+          bordered={true}
+          style={{ width: "90%", margin: "1em" }}
+        >
           {this.state.article === null ? "loading..." : this.state.article.body}
-        </p>
-        <ul>
-          {this.state.comments === null
-            ? "loading..."
-            : this.state.comments.map(comment => {
-                return (
-                  <li key={comment.comment_id}>
-                    <h6>{comment.author}</h6>
-                    <h4>{comment.body}</h4>
-                    {this.state.username === comment.author ? (
-                      <button onClick={this.deleteUser}>DELETE COMMENT</button>
-                    ) : null}
-                  </li>
-                );
-              })}
-        </ul>
+
+          <Comments article_id={this.props.article_id} />
+        </Card>
+        {}
+        <ul />
 
         {this.state.valid === false ? (
           <p style={{ color: "red" }}>You need to be logged in to do that!</p>
@@ -53,14 +45,6 @@ class Article extends Component {
             placeholder="new comment"
             alt="new comment"
           />
-          {/* <select
-            value={this.state.author}
-            name="author"
-            onChange={this.handleChange}
-          >
-            <option value="grumpy19">grumpy19</option>
-            <option value="jessjelly">jessjelly</option>
-          </select> */}
           <button type="submit" name="submit" onClick={this.handleSubmit}>
             submit
           </button>
@@ -119,7 +103,6 @@ class Article extends Component {
     } catch (error) {
       console.log(error);
     }
-    // return res.data.username;
   };
 }
 

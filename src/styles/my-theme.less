@@ -1,15 +1,74 @@
-@import "./antd.less"; // Import Ant Design styles by less entry
+@import "../../node_modules/antd/dist/antd.less";
 
-@primary-color: #d228e9; // primary color for all components
-@link-color: #1890ff; // link color
-@success-color: #52c41a; // success state color
-@warning-color: #faad14; // warning state color
-@error-color: #f5222d; // error state color
-@font-size-base: 40px; // major text font size
-@heading-color: rgba(0, 0, 0, 0.85); // heading text color
-@text-color: rgba(0, 0, 0, 0.65); // major text color
-@text-color-secondary : rgba(0, 0, 0, .45); // secondary text color
-@disabled-color : rgba(0, 0, 0, .25); // disable state color
-@border-radius-base: 4px; // major border radius
-@border-color-base: #d9d9d9; // major border color
-@box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // major shadow for layers
+@main: #222629;
+@main-dark: #191c1e;
+@main-light: #2e3338;
+@text: #ddd;
+@text-light: #fff;
+@text-dark: #222;
+@text-disabled: #999;
+
+// First
+@primary: #26547c;
+@info: #ffd166;
+@success: #06d6a0;
+@error: #ef476f;
+@warn: #e55934;
+
+// Second
+// @primary: #004E64;
+// @info: #F2C14E;
+// @success: #499F68;
+// @error: #DA2C38;
+// @warn: #ED5A31;
+
+@layout-header-height: 48px;
+
+@primary-color: @primary;
+@processing-color: @info;
+@info-color: @info;
+@success-color: @success;
+@error-color: @error;
+@highlight-color: @error;
+@warning-color: @warn;
+@text-color: @text;
+@text-color-dark: @text-dark;
+@disabled-color: @text-disabled;
+@text-color-secondary: @text-disabled;
+@heading-color: @text-light;
+@heading-color-dark: @text-dark;
+@link-color: lighten(@primary, 10%);
+
+@body-background: @main;
+@component-background: @main-light;
+@item-active-bg: @primary;
+@item-hover-bg: @primary;
+@table-row-hover-bg: darken(@primary, 10%);
+
+@border-color-base: @main-dark;
+@border-color-split: @main-light;
+
+@background-color-light: @main-light;
+@background-color-base: @main-light;
+
+@checkbox-check-color: @main-light;
+
+@layout-header-background: @main-dark;
+@layout-body-background: @main;
+
+// Alert
+@alert-success-border-color: @success;
+@alert-success-bg-color: darken(@success, 20%);
+@alert-success-icon-color: @success;
+
+@alert-info-border-color: @info;
+@alert-info-bg-color: darken(@info, 30%);
+@alert-info-icon-color: @info;
+
+@alert-warning-border-color: @warn;
+@alert-warning-bg-color: darken(@warn, 20%);
+@alert-warning-icon-color: @warn;
+
+@alert-error-border-color: @error;
+@alert-error-bg-color: darken(@error, 20%);
+@alert-error-icon-color: @error;

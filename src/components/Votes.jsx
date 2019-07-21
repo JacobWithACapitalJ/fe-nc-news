@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { incrementVote } from "../utils/api";
 import { Button, Row, Col, Icon } from "antd";
+import cookie from "react-cookies";
 class Votes extends Component {
   state = { currentVotes: this.props.votes, voted: false };
   render() {
@@ -33,13 +34,16 @@ class Votes extends Component {
   };
 
   handleVote = (inc_vote, event) => {
+    const { token } = cookie.select(/token/);
     event.preventDefault();
-    incrementVote(inc_vote, this.props.id, this.props.section).catch(() => {
-      this.setState({
-        currentVotes: this.state.currentVotes - inc_vote,
-        voted: false
-      });
-    });
+    incrementVote(inc_vote, this.props.id, this.props.section, token).catch(
+      () => {
+        this.setState({
+          currentVotes: this.state.currentVotes - inc_vote,
+          voted: false
+        });
+      }
+    );
     this.setState({
       currentVotes: this.state.currentVotes + inc_vote,
       voted: true

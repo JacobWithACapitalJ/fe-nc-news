@@ -1,5 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
+// import "./styles/my-theme.less";
 import { Router } from "@reach/router";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
@@ -15,7 +16,7 @@ function App() {
         <Nav />
         <Router>
           <Articles path="/articles" />
-          <Article path="articles/:article_id" />
+          <Article path="/articles/:article_id" />
           <Articles path="articles/topic/:topic" />
           <Login path="/login" />
         </Router>

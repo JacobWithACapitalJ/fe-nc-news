@@ -63,9 +63,10 @@ export const authLogin = async (username, password) => {
   }
 };
 
-export const incrementVote = async (inc_votes, id, section) => {
+export const incrementVote = async (inc_votes, id, section, token) => {
   const res = await axios.patch(`${baseURL}${section}/${id}`, {
-    inc_votes
+    inc_votes,
+    token
   });
 };
 

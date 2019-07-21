@@ -3,12 +3,11 @@ import { getArticles } from "../utils/api";
 import { Link } from "@reach/router";
 import Votes from "./Votes";
 import { Menu, Dropdown, Icon, Card, message } from "antd";
-
+// import "../styles/dark.min.css";
 class Articles extends Component {
   state = { articles: [], filter: "" };
 
   render() {
-    const { Meta } = Card;
     const menu = (
       <Menu>
         <Menu.Item key="0" onClick={() => this.handleFilter("created_at")}>
@@ -24,7 +23,7 @@ class Articles extends Component {
     );
 
     return (
-      <ul>
+      <ul className="ul">
         <Dropdown overlay={menu} trigger={["click"]}>
           <span className="ant-dropdown-link">
             {this.state.filter.length === 0
@@ -38,9 +37,9 @@ class Articles extends Component {
               return (
                 <Card
                   title={article.title}
-                  hoverable
                   bordered={true}
                   key={article.article_id}
+                  // size="small"
                   style={{ width: "90%", margin: "1em" }}
                   actions={[
                     <Votes
@@ -52,7 +51,7 @@ class Articles extends Component {
                       <Icon type="message" />
                       &emsp; comments: {article.comments_count}
                     </span>,
-                    <Link to={`./${article.article_id}`}>
+                    <Link to={`/articles/${article.article_id}`}>
                       see more &emsp;
                       <Icon type="dash" />
                     </Link>
@@ -79,7 +78,7 @@ class Articles extends Component {
     return this.setState({ articles });
   };
   handleFilter = async filter => {
-    message.info(`filtering by ${filter}`);
+    message.info(`sorting by ${filter}`);
     const articles = await getArticles(this.props.topic, filter);
     return this.setState({ articles, filter });
   };
