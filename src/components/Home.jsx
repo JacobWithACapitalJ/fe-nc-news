@@ -27,7 +27,7 @@ export default function Home(props) {
           Back-end repo
         </a>
         <br />
-        <a href="https://jacobs-nc-news.herokuapp.com/">Back-end API</a>
+        <a href="https://jacobs-nc-news.herokuapp.com/api">Back-end API</a>
       </Typography>
     </div>
   );

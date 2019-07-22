@@ -65,7 +65,12 @@ class App extends Component {
                 </Router>
               </div>
             </Content>
-            <Footer style={{ textAlign: "center" }}>Please hire me!</Footer>
+            <Footer style={{ textAlign: "center" }}>
+              Contact me on Linkdin:{" "}
+              <a href="www.linkedin.com/in/jacob-ashe">
+                www.linkedin.com/in/jacob-ashe
+              </a>
+            </Footer>
           </Layout>
         </Layout>
       </Layout>
