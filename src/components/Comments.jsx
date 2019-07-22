@@ -69,7 +69,7 @@ class Comments extends Component {
 
   fetchComments = async props => {
     const comments = await getComments(this.props.article_id);
-    console.log(comments);
+
     return this.setState({ comments });
   };
 
@@ -77,7 +77,6 @@ class Comments extends Component {
     const { token } = cookie.select(/token/);
     try {
       const res = await checkAuth(token);
-      console.log("logged in");
       this.setState({ username: res.data.username });
     } catch (error) {
       console.log(error, "not logged in");

@@ -71,8 +71,12 @@ export const incrementVote = async (inc_votes, id, section, token) => {
 };
 
 export const checkAuth = async token => {
-  const res = await axios.post(`${baseURL}checkAuth`, { token });
-  return res;
+  try {
+    const res = await axios.post(`${baseURL}checkAuth`, { token });
+    return res;
+  } catch (error) {
+    return error;
+  }
 };
 
 export const removeComment = async (comment_id, token) => {

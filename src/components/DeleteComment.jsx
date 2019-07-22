@@ -28,9 +28,7 @@ class DeleteComment extends Component {
 
       parentState({ comments });
       return res.status;
-    } catch (error) {
-      console.log(error, "<<< handle delete error");
-    }
+    } catch (error) {}
   };
 }
 

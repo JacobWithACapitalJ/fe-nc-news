@@ -40,7 +40,10 @@ class Articles extends Component {
                   bordered={true}
                   key={article.article_id}
                   size={this.props.collapsed ? "small" : null}
-                  style={{ marginBottom: "1em" }}
+                  style={{
+                    marginBottom: "1em",
+                    boxShadow: " 5px 5px 5px rgba(0,0,0,5%)"
+                  }}
                   actions={[
                     <Votes
                       votes={article.votes}

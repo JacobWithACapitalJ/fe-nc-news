@@ -2,7 +2,7 @@ import React from "react";
 import { Typography } from "antd";
 export default function Home(props) {
   return (
-    <div>
+    <div style={{ margin: "1em" }}>
       <Typography>
         <Typography.Title>Welcome to NC NEWS!</Typography.Title>
         This site was created to demonstrate use of React with an external API.

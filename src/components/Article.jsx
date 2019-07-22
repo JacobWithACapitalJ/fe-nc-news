@@ -22,7 +22,10 @@ class Article extends Component {
               : this.state.article.title
           }
           bordered={true}
-          style={{ width: "90%", margin: "1em" }}
+          style={{
+            margin: "1em",
+            boxShadow: " 5px 5px 5px rgba(0,0,0,5%)"
+          }}
         >
           {this.state.article === null ? "loading..." : this.state.article.body}
 
@@ -65,7 +68,7 @@ class Article extends Component {
       const res = await checkAuth(token);
       this.setState({ username: res.data.username });
     } catch (error) {
-      console.log(error);
+      console.log("not logged in");
     }
   };
 }
