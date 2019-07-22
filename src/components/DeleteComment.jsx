@@ -7,6 +7,7 @@ class DeleteComment extends Component {
   render() {
     return (
       <div>
+        &emsp;
         {this.state.deleted ? null : (
           <Button size="small" onClick={this.handleDelete}>
             Delete
