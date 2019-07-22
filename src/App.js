@@ -31,8 +31,8 @@ function App() {
           <Nav />
         </Sider>
         <Layout>
-          <Layout.Header style={{ backgroundColor: "darkslateblue" }}>
-            <Typography.Title style={{ textAlign: "center", color: "white" }}>
+          <Layout.Header style={{ backgroundColor: "darkred" }}>
+            <Typography.Title style={{ color: "white" }}>
               {"<NC News/>"}
             </Typography.Title>
           </Layout.Header>
