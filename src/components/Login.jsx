@@ -14,7 +14,7 @@ class Login extends Component {
             subTitle={`You are currently logged in as: ${this.state.username}`}
           />
         ) : (
-          <Form>
+          <Form style={{ width: "20em" }}>
             <Form.Item
               label="username"
               validateStatus={
@@ -30,6 +30,9 @@ class Login extends Component {
                 name="username"
                 onChange={this.handleChange}
                 placeholder="username"
+                prefix={
+                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
               />
             </Form.Item>
             <Form.Item
@@ -47,6 +50,9 @@ class Login extends Component {
                 name="password"
                 onChange={this.handleChange}
                 placeholder="password"
+                prefix={
+                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
               />
             </Form.Item>
             <Button type="primary" onClick={this.handleSubmit}>

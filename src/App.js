@@ -43,7 +43,7 @@ class App extends Component {
             //   position: "fixed",
             //   left: 0}}
             style={{
-              boxShadow: "5px 5px 5px rgba(0,0,0,20%)"
+              boxShadow: "5px 0px 5px rgba(0,0,0,20%)"
             }}
           >
             <Nav />
