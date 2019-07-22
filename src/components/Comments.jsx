@@ -4,7 +4,7 @@ import cookie from "react-cookies";
 import { Comment, Avatar, Divider } from "antd";
 import Votes from "./Votes";
 import NewComment from "./NewComment";
-
+import DeleteComment from "./DeleteComment";
 class Comments extends Component {
   state = {
     comments: [],
@@ -40,7 +40,16 @@ class Comments extends Component {
                         votes={comment.votes}
                         id={comment.comment_id}
                         section="comments"
-                      />
+                      />,
+                      this.state.username === comment.author ? (
+                        <DeleteComment
+                          id={comment.comment_id}
+                          comments={this.state.comments}
+                          parentState={(s, c) => {
+                            this.setState(s, c);
+                          }}
+                        />
+                      ) : null
                     ]}
                     content={comment.body}
                     datetime={comment.created_at}

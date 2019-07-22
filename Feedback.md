@@ -32,7 +32,7 @@ Reach readme, please include the following along with anything else you want whe
 
 - [x] Serves all articles / top articles
 - [x] Can vote on articles
-- [ ] Can vote a maximum of once in either direction per page load - can vote infinitely
+- [x] Can vote a maximum of once in either direction per page load - can vote infinitely
 - [x] Votes are persistent when page is refreshed
 - [x] Topic pages load only relevant articles (especially when navigating from one topic page to another)
 - [x] Can sort articles by date created / comment_count / votes
@@ -40,9 +40,9 @@ Reach readme, please include the following along with anything else you want whe
 ### Individual Article / Comments
 
 - [x] Individual articles are served with comments
-- [ ] Can vote on comments
-- [ ] Can vote a maximum of once in either direction per page load
-- [ ] Votes are persistent when page is refreshed
+- [x] Can vote on comments
+- [x] Can vote a maximum of once in either direction per page load
+- [x] Votes are persistent when page is refreshed
 - [x] Can post new comments, which are persistent
 - [ ] Can only delete comments of logged in user
 - [ ] Deleted comments don’t re-appear on re-render/refresh

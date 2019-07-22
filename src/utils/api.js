@@ -74,3 +74,14 @@ export const checkAuth = async token => {
   const res = await axios.post(`${baseURL}checkAuth`, { token });
   return res;
 };
+
+export const removeComment = async (comment_id, token) => {
+  try {
+    const res = await axios.delete(`${baseURL}comments/${comment_id}`, {
+      data: { token }
+    });
+    return res.status;
+  } catch (error) {
+    return error;
+  }
+};
