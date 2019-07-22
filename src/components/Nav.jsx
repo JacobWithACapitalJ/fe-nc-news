@@ -8,10 +8,13 @@ class Nav extends Component {
     return (
       <Menu theme="light" mode="inline">
         <Menu.Item>
-          <Link to="/articles">HOME</Link>
+          <Link to="/">HOME</Link>
         </Menu.Item>
         <Menu.Divider />
         <Menu.SubMenu title="Topics">
+          <Menu.Item>
+            <Link to="/articles">all articles</Link>
+          </Menu.Item>
           {this.state.topics === null
             ? "loading"
             : this.state.topics.map(topic => {

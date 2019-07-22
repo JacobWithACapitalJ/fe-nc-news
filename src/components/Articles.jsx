@@ -57,7 +57,7 @@ class Articles extends Component {
                     </Link>
                   ]}
                 >
-                  {`${article.body.slice(0, 255)}...`}
+                  {`${article.body.slice(0, 125)}...`}
                 </Card>
               );
             })

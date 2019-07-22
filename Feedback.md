@@ -44,8 +44,8 @@ Reach readme, please include the following along with anything else you want whe
 - [x] Can vote a maximum of once in either direction per page load
 - [x] Votes are persistent when page is refreshed
 - [x] Can post new comments, which are persistent
-- [ ] Can only delete comments of logged in user
-- [ ] Deleted comments don’t re-appear on re-render/refresh
+- [x] Can only delete comments of logged in user
+- [x] Deleted comments don’t re-appear on re-render/refresh
 
 ### Additional functionality:
 
@@ -65,12 +65,12 @@ Reach readme, please include the following along with anything else you want whe
 
 ## Code
 
-- [ ] Well named components
+- [x] Well named components
   - Card is not a very clear name, and i can't see where it's being used?
-- [ ] Functional components used where possible
+- [x] Functional components used where possible
   - no functional components used, a few of the components you have can be simplified, for example taking the comments out of the Article component, especially when you add voting and deletion on them; the form for a new comment can be it's own component too.
 - [x] `node_modules` git ignored
-- [ ] Components reused where possible (`Articles` / `Voter`...)
+- [x] Components reused where possible (`Articles` / `Voter`...)
   - reusing Articles but not Voting, as comments cannot be voted on
 - [x] Functions are DRY (`handleChange` for controlled components / api calls)
 - [ ] Use object destructuring where possible - not used as much as possible

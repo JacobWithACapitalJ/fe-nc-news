@@ -4,21 +4,32 @@ import React from "react";
 import { Router } from "@reach/router";
 // import Header from "./components/Header";
 // import "../styles/dark.min.css";
-
+import Error from "./components/Errors";
 import Nav from "./components/Nav";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
 import Login from "./components/Login";
-import { Layout, Typography, Icon } from "antd";
+import { Layout } from "antd";
 import Splash from "./components/Splash";
+import Home from "./components/Home";
 
 const { Content, Footer, Sider } = Layout;
 
 function App() {
   return (
-    // <div className="bg">
-    //   <div className="App">
     <Layout>
+      <Layout.Header
+        style={{
+          backgroundColor: "darkgrey"
+        }}
+      >
+        <img
+          src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_second.png"
+          alt="northcoders logo"
+          style={{ height: "4em" }}
+        />
+        <text style={{ color: "white", fontWeight: "bold" }}>News</text>
+      </Layout.Header>
       <Layout>
         <Sider
           breakpoint="lg"
@@ -27,28 +38,33 @@ function App() {
             console.log(broken);
           }}
           theme="light"
+          // style={{
+          //   overflow: "auto",
+          //   height: "100vh",
+          //   position: "fixed",
+          //   left: 0}}
+          style={{
+            boxShadow: "5px 5px 5px rgba(0,0,0,20%)"
+          }}
         >
           <Nav />
+          <Splash height="4em">NC NEWS</Splash>
         </Sider>
         <Layout>
-          <Layout.Header style={{ backgroundColor: "darkred" }}>
-            <Typography.Title style={{ color: "white" }}>
-              {"<NC News/>"}
-            </Typography.Title>
-          </Layout.Header>
           <Content
-            style={{
-              margin: "24px 16px 0",
-              overflowY: "scroll"
-            }}
+          // style={{
+          //   // margin: "24px 16px 0",
+          //   overflow: "initial"
+          // }}
           >
             <div style={{ padding: 24, minHeight: 360 }}>
               <Router>
-                <Splash path="/" />
+                <Home path="/" />
                 <Articles path="/articles" />
                 <Article path="/articles/:article_id" />
                 <Articles path="articles/topic/:topic" />
                 <Login path="/login" />
+                <Error default />
               </Router>
             </div>
           </Content>
