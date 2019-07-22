@@ -37,11 +37,6 @@ class App extends Component {
               console.log(broken);
             }}
             theme="light"
-            // style={{
-            //   overflow: "auto",
-            //   height: "100vh",
-            //   position: "fixed",
-            //   left: 0}}
             style={{
               boxShadow: "5px 0px 5px rgba(0,0,0,20%)"
             }}
@@ -50,13 +45,13 @@ class App extends Component {
             <Splash height="4em">NC NEWS</Splash>
           </Sider>
           <Layout>
-            <Content
-            // style={{
-            //   // margin: "24px 16px 0",
-            //   overflow: "initial"
-            // }}
-            >
-              <div style={{ padding: 24, minHeight: 360 }}>
+            <Content>
+              <div
+                style={{
+                  padding: 24,
+                  minHeight: "86vh"
+                }}
+              >
                 <Router>
                   <Home path="/" />
                   <Articles path="/articles" collapsed={this.state.collapsed} />
