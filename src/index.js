@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 // import "./styles/result.css";
 // import "./components/dark.min.css";
 import "antd/dist/antd.css";
-
+// import "./components/index.css";
 import App from "./App";
 
 ReactDOM.render(<App />, document.getElementById("root"));

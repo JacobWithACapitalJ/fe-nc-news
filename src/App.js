@@ -10,6 +10,7 @@ import Articles from "./components/Articles";
 import Article from "./components/Article";
 import Login from "./components/Login";
 import { Layout, Typography, Icon } from "antd";
+import Splash from "./components/Splash";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -30,9 +31,9 @@ function App() {
           <Nav />
         </Sider>
         <Layout>
-          <Layout.Header>
+          <Layout.Header style={{ backgroundColor: "darkslateblue" }}>
             <Typography.Title style={{ textAlign: "center", color: "white" }}>
-              NC News
+              {"<NC News/>"}
             </Typography.Title>
           </Layout.Header>
           <Content
@@ -43,6 +44,7 @@ function App() {
           >
             <div style={{ padding: 24, minHeight: 360 }}>
               <Router>
+                <Splash path="/" />
                 <Articles path="/articles" />
                 <Article path="/articles/:article_id" />
                 <Articles path="articles/topic/:topic" />
