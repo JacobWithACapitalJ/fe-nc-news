@@ -39,18 +39,20 @@ class Articles extends Component {
                   title={article.title}
                   bordered={true}
                   key={article.article_id}
-                  // size="small"
+                  size={this.props.collapsed ? "small" : null}
                   style={{ marginBottom: "1em" }}
                   actions={[
                     <Votes
                       votes={article.votes}
                       id={article.article_id}
                       section="articles"
+                      collapsed={this.props.collapsed}
                     />,
-                    <span>
+                    <Link to={`/articles/${article.article_id}`}>
                       <Icon type="message" />
-                      &emsp; comments: {article.comments_count}
-                    </span>,
+                      {this.props.collapsed ? null : <span> comments: </span>}
+                      &emsp;{article.comments_count}
+                    </Link>,
                     <Link to={`/articles/${article.article_id}`}>
                       see more &emsp;
                       <Icon type="dash" />

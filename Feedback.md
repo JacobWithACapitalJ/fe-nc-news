@@ -57,7 +57,7 @@ Reach readme, please include the following along with anything else you want whe
 
 ## Error Handling - no error handling as of this point!
 
-- [ ] Bad url
+- [x] Bad url
 - [ ] Bad topic slug in url
 - [ ] Bad article id in url
 - [ ] Bad username in url

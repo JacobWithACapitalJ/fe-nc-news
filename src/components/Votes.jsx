@@ -24,7 +24,8 @@ class Votes extends Component {
             <Icon type="down" />
           </Button>
         </ButtonGroup>
-        &emsp; votes: {this.state.currentVotes}
+        {this.props.collapsed ? " " : <span>&emsp; votes: </span>}
+        {this.state.currentVotes}
       </div>
     );
   }
